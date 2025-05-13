@@ -1,0 +1,69 @@
+<!-- templates/login.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f7f7f7;
+            font-family: 'Arial', sans-serif;
+        }
+        h2 {
+            color: #343a40;
+            text-align: center;
+        }
+        .container {
+            max-width: 500px;
+            margin-top: 50px;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .btn-custom {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+        }
+        .alert {
+            margin-top: 20px;
+        }
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: #6c757d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Вход в личный кабинет</h2>
+
+        {% if error %}
+        <div class="alert alert-danger" role="alert">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post" action="{{ url_for('login') }}">
+            <div class="mb-3">
+                <label for="username" class="form-label">Имя пользователя</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Пароль</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-success btn-custom">Войти</button>
+        </form>
+
+        <hr>
+        <a href="{{ url_for('home') }}" class="btn btn-info btn-custom">Назад на главную</a>
+
+        <footer>
+            <p>&copy; 2023 Магазин игр</p>
+        </footer>
+    </div>
+</body>
+</html>
